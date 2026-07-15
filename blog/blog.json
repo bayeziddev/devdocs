@@ -1,0 +1,48 @@
+[
+  {
+    "slug": "welcome-to-devdocs",
+    "title": "Welcome to DevDocs: The Future of Static Documentation",
+    "description": "Learn how DevDocs makes it incredibly easy to build and deploy fast, SEO-friendly developer documentation and blogs using just Markdown.",
+    "content": "## Welcome to DevDocs\n\nDevDocs is a lightweight, zero-configuration Static Site Generator (SSG)...",
+    "date": "2026-07-15",
+    "tags": [
+      "DevDocs",
+      "Open Source",
+      "Announcement"
+    ],
+    "image": "https://devdocs.example.com/assets/images/blog-default.jpg",
+    "author": "Sayad Md Bayezid Hosan",
+    "category": "Updates"
+  },
+  {
+    "slug": "python-course-for-beginners-class-01-setup",
+    "title": "Python Course for Beginners Class 01: Environment Setup",
+    "description": "Start your Python programming journey. Class 01 covers course orientation, setting up your IDE, installing Python, and how assignments are submitted.",
+    "content": "## Setting Up the Development Environment\n\nAn IDE (Integrated Development Environment) is software that combines a code editor...",
+    "date": "2026-07-10",
+    "tags": [
+      "Python Course",
+      "Learn Python",
+      "Programming Basics",
+      "VS Code"
+    ],
+    "image": "https://devdocs.example.com/assets/images/python-course-class-01-cover.svg",
+    "author": "Sayad Md Bayezid Hosan",
+    "category": "Tutorials"
+  },
+  {
+    "slug": "mastering-markdown-for-documentation",
+    "title": "Mastering Markdown for Technical Documentation",
+    "description": "A comprehensive guide on utilizing advanced Markdown syntax to write clear, readable, and maintainable documentation for your open-source projects.",
+    "content": "## Why Markdown?\n\nMarkdown has become the industry standard for writing technical documentation because of its simplicity...",
+    "date": "2026-07-05",
+    "tags": [
+      "Markdown",
+      "Technical Writing",
+      "Guides"
+    ],
+    "image": "https://devdocs.example.com/assets/images/blog-default.jpg",
+    "author": "Sayad Md Bayezid Hosan",
+    "category": "Guides"
+  }
+]
