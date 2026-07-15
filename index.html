@@ -5,93 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>DevDocs - Developer Documentation & Blog</title>
-    <meta name="description" content="Technical documentation, open-source guidelines, and expert blog insights for developers and creators.">
+    <title>DevDocs - Zero-Config Developer Documentation Generator</title>
+    <meta name="description" content="A lightweight, zero-configuration static site generator for instantly building beautiful, mobile-friendly developer documentation and technical blogs.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="DevDocs - Developer Documentation Generator">
+    <meta property="og:description" content="Build lightning-fast technical docs and blogs directly from Markdown files.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/bayeziddev/devdocs">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
     
     <!-- Clean UI Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/feed.css">
     
-    <!-- JavaScript Files (Handles Navbar, Footer, and Theme) -->
+    <!-- Core Application Script (Injects Navbar, Footer, and handles Theme) -->
     <script src="./assets/js/app.js" defer></script>
-    <script src="./assets/js/feed-combined.js" defer></script> <!-- Your Docs/Blog Feed logic -->
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebSite",
+        "@type": "SoftwareApplication",
         "name": "DevDocs",
+        "applicationCategory": "DeveloperApplication",
+        "description": "Zero-configuration static site generator for documentation and blogs.",
         "url": "https://github.com/bayeziddev/devdocs",
-        "publisher": {
-            "@type": "Organization",
-            "name": "DevDocs",
-            "founder": {
-                "@type": "Person",
-                "name": "Sayad Md Bayezid Hosan"
-            }
+        "author": {
+            "@type": "Person",
+            "name": "Sayad Md Bayezid Hosan"
         }
     }
     </script>
 
     <style>
-        /* Cookie Consent Banner Styling */
-        #cookie-consent-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid #e1e8ed;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            z-index: 9999;
-            display: none;
-            padding: 1.2rem 0;
+        /* Landing Page Specific Styles */
+        .hero-section {
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            background: linear-gradient(180deg, var(--bg-secondary, #f8fafc) 0%, var(--bg-primary, #ffffff) 100%);
         }
-        [data-theme="dark"] #cookie-consent-banner {
-            background: #1f2937;
-            border-top: 1px solid #374151;
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            color: var(--text-primary, #0f172a);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
-        .cookie-container {
+        .hero-title span { color: #2563eb; }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary, #475569);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        .hero-cta {
             display: flex;
+            gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
+            gap: 0.5rem;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: 1px solid #2563eb;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.5);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary, #0f172a);
+            border: 1px solid var(--border-color, #cbd5e1);
+        }
+        .btn-secondary:hover {
+            background-color: var(--bg-secondary, #f1f5f9);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
         }
-        .cookie-text {
-            flex: 1;
-            min-width: 280px;
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
-        .cookie-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary, #0f172a);
         }
-        .cookie-btn {
-            background: #2563eb;
-            color: #ffffff;
-            border: none;
-            padding: 0.6rem 1.8rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--bg-primary, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-5px); border-color: #cbd5e1; }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            margin-bottom: 1rem;
+            color: var(--text-primary, #0f172a);
         }
-        .cookie-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
-        .cookie-link { font-size: 0.9rem; color: #2563eb; text-decoration: none; font-weight: 600; }
-        .cookie-link:hover { text-decoration: underline; }
+        .feature-card p {
+            color: var(--text-secondary, #64748b);
+            line-height: 1.6;
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] .hero-section { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
+        [data-theme="dark"] .btn-secondary { color: #f8fafc; border-color: #475569; }
+        [data-theme="dark"] .btn-secondary:hover { background-color: #334155; }
+        [data-theme="dark"] .feature-card { background: #1e293b; border-color: #334155; }
+        [data-theme="dark"] .feature-card h3, [data-theme="dark"] .section-header h2 { color: #f8fafc; }
+        [data-theme="dark"] .feature-card p { color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -99,62 +158,67 @@
     <header id="main-header"></header>
 
     <main>
-        <!-- Clean Hero Section -->
-        <section class="hero" style="text-align: center; padding: 5rem 0 3rem; background: var(--bg-secondary);">
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="container">
-                <h1 style="font-size: clamp(2.5rem, 8vw, 3.5rem); margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.02em;">Documentation & Insights</h1>
-                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
-                    Explore our technical guides, open-source documentation, and latest developer updates.
+                <h1 class="hero-title">Build beautiful docs.<br><span>Zero configuration.</span></h1>
+                <p class="hero-subtitle">
+                    DevDocs is an open-source static site generator designed for developers. Write in Markdown, and let the engine generate blazing-fast, mobile-ready documentation and technical blogs instantly.
                 </p>
-                
-                <div id="live-search-container" style="max-width: 600px; margin: 0 auto;">
-                    <div class="search-wrapper" style="position: relative;">
-                        <input type="text" id="search-input" placeholder="Search docs or articles..." autocomplete="off" style="width: 100%; padding: 1rem 1rem 1rem 3rem; border-radius: 12px; border: 1px solid var(--border-color); font-size: 1rem;">
-                        <span class="search-icon" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);">🔍</span>
-                    </div>
+                <div class="hero-cta">
+                    <a href="/docs/" class="btn btn-primary">
+                        📖 Read the Docs
+                    </a>
+                    <a href="/blog/" class="btn btn-secondary">
+                        📝 Explore the Blog
+                    </a>
                 </div>
             </div>
         </section>
 
-        <div class="container" style="display: flex; flex-direction: column; gap: 3rem; padding-bottom: 5rem; padding-top: 2rem;">
-            
-            <!-- Docs & Blog Feed Area -->
-            <div id="content-feed" class="feed-container">
-                <div style="text-align: center; padding: 3rem;">
-                    <p style="color: var(--text-secondary);">✨ Loading documentation and articles...</p>
+        <!-- Features Grid -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Why choose DevDocs?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Insanely Fast</h3>
+                    <p>Built with Vanilla JavaScript and zero heavy frontend frameworks. Pages load instantly, ensuring a perfect Lighthouse score.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Markdown Driven</h3>
+                    <p>Focus entirely on your content. Write standard Markdown files and DevDocs automatically handles the routing, parsing, and formatting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌓</div>
+                    <h3>Built-in Dark Mode</h3>
+                    <p>Includes an intelligent theme toggler that respects system preferences and saves user choices seamlessly via local storage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>SEO Optimized</h3>
+                    <p>Generates clean, semantic HTML with automated canonical URLs, Open Graph tags, and structured JSON-LD data for maximum visibility.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Developer Trust Badges -->
-            <section class="trust-badges-container" style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                <div class="trust-badges-grid" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                        <span>📖</span> <span>Comprehensive Docs</span>
-                    </div>
-                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                        <span>⚡</span> <span>Zero Config</span>
-                    </div>
-                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                        <span>🔓</span> <span>Open Source</span>
-                    </div>
+        <!-- Minimal Workflow Section -->
+        <section style="background: var(--bg-secondary, #f8fafc); padding: 5rem 1rem; border-top: 1px solid var(--border-color, #e2e8f0); border-bottom: 1px solid var(--border-color, #e2e8f0);">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--text-primary, #0f172a);">How it works</h2>
+                <div style="text-align: left; background: var(--bg-primary, #ffffff); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color, #e2e8f0); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); font-family: monospace; font-size: 1.1rem; color: #475569;">
+                    <p style="margin-bottom: 1rem;"><span style="color: #2563eb;">1.</span> Drop your Markdown files into the <code style="background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px;">/content</code> folder.</p>
+                    <p style="margin-bottom: 1rem;"><span style="color: #2563eb;">2.</span> Run the build script via Node.js.</p>
+                    <p style="margin: 0;"><span style="color: #2563eb;">3.</span> Deploy the static HTML files anywhere (GitHub Pages, Vercel, Netlify).</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer injected here via app.js -->
     <footer id="main-footer"></footer>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner">
-        <div class="cookie-container">
-            <p class="cookie-text">
-                We use cookies to improve your reading experience. By continuing to use our site, you consent to our <a href="/privacy/" class="cookie-link">Privacy Policy</a>.
-            </p>
-            <div class="cookie-actions">
-                <button id="accept-cookies" class="cookie-btn">Accept</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
