@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>DevDocs - Developer Documentation & Blog</title>
+    <meta name="description" content="Technical documentation, open-source guidelines, and expert blog insights for developers and creators.">
+    
+    <!-- Clean UI Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/feed.css">
+    
+    <!-- JavaScript Files (Handles Navbar, Footer, and Theme) -->
+    <script src="./assets/js/app.js" defer></script>
+    <script src="./assets/js/feed-combined.js" defer></script> <!-- Your Docs/Blog Feed logic -->
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "DevDocs",
+        "url": "https://github.com/bayeziddev/devdocs",
+        "publisher": {
+            "@type": "Organization",
+            "name": "DevDocs",
+            "founder": {
+                "@type": "Person",
+                "name": "Sayad Md Bayezid Hosan"
+            }
+        }
+    }
+    </script>
+
+    <style>
+        /* Cookie Consent Banner Styling */
+        #cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #e1e8ed;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            z-index: 9999;
+            display: none;
+            padding: 1.2rem 0;
+        }
+        [data-theme="dark"] #cookie-consent-banner {
+            background: #1f2937;
+            border-top: 1px solid #374151;
+        }
+        .cookie-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .cookie-text {
+            flex: 1;
+            min-width: 280px;
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .cookie-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .cookie-btn {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cookie-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .cookie-link { font-size: 0.9rem; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .cookie-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <!-- Navbar injected here via app.js -->
+    <header id="main-header"></header>
+
+    <main>
+        <!-- Clean Hero Section -->
+        <section class="hero" style="text-align: center; padding: 5rem 0 3rem; background: var(--bg-secondary);">
+            <div class="container">
+                <h1 style="font-size: clamp(2.5rem, 8vw, 3.5rem); margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.02em;">Documentation & Insights</h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                    Explore our technical guides, open-source documentation, and latest developer updates.
+                </p>
+                
+                <div id="live-search-container" style="max-width: 600px; margin: 0 auto;">
+                    <div class="search-wrapper" style="position: relative;">
+                        <input type="text" id="search-input" placeholder="Search docs or articles..." autocomplete="off" style="width: 100%; padding: 1rem 1rem 1rem 3rem; border-radius: 12px; border: 1px solid var(--border-color); font-size: 1rem;">
+                        <span class="search-icon" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);">🔍</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container" style="display: flex; flex-direction: column; gap: 3rem; padding-bottom: 5rem; padding-top: 2rem;">
+            
+            <!-- Docs & Blog Feed Area -->
+            <div id="content-feed" class="feed-container">
+                <div style="text-align: center; padding: 3rem;">
+                    <p style="color: var(--text-secondary);">✨ Loading documentation and articles...</p>
+                </div>
+            </div>
+
+            <!-- Developer Trust Badges -->
+            <section class="trust-badges-container" style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <div class="trust-badges-grid" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                        <span>📖</span> <span>Comprehensive Docs</span>
+                    </div>
+                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                        <span>⚡</span> <span>Zero Config</span>
+                    </div>
+                    <div class="trust-badge-item" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                        <span>🔓</span> <span>Open Source</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer injected here via app.js -->
+    <footer id="main-footer"></footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner">
+        <div class="cookie-container">
+            <p class="cookie-text">
+                We use cookies to improve your reading experience. By continuing to use our site, you consent to our <a href="/privacy/" class="cookie-link">Privacy Policy</a>.
+            </p>
+            <div class="cookie-actions">
+                <button id="accept-cookies" class="cookie-btn">Accept</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
